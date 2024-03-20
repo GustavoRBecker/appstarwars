@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Characters / Gustavo da Rosa Becker</title>
+    <link rel="stylesheet" href="planetstyle.css">
+    <link rel="shortcut icon" href="../assets/millennium-falcon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+
+        <a class="logo-link" href="../index.html">
+            <div class="logo">
+                <img src="../assets/star-wars-logo.png" alt="logo" class="logo-img"/>
+                <span class="logo-text">Archive</span>
+            </div>
+        </a>
+
+        <nav>
+            <a class="pages-link" href="../index.html">
+                Home
+            </a>
+            <a class="pages-link" href="../characters/characters.html">
+                Personagens
+            </a>
+            <a class="pages-link" href="./planets.html">
+                Planetas
+            </a>
+            <a class="pages-link" href="./characters/characters.html">
+                Naves
+            </a>
+        </nav>
+
+        <div class="social-media">
+
+            <a href="https://www.instagram.com/gustavorbecker/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.facebook.com/gustavo.darosabecker/" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://github.com/GustavoRBecker" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/gustavo-da-rosa-becker-71474a230/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+        </div>
+
+    </header>
+
+    <div class="main-container">
+        <h2>Conheca todos os planetas de Star Wars em um so lugar</h2>
+
+        <div class="main-content" id="main-content"></div>
+
+        <div class="modal" id="modal" onclick="hideModal()">
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+
+        <div class="buttons">
+            <button id="back-button" disabled>Anterior</button>
+            <button id="next-button" disabled>Próxima</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="footer-logo">Star Wars Archive</p>
+        <p class="copyright">Desenvolvido por &copy; Gustavo da Rosa Becker</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/4aa75cd1e6.js" crossorigin="anonymous"></script>
+    <script src="./planetscript.js"></script>
+</body>
+</html>

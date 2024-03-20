@@ -1,0 +1,297 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background-color: #000;
+}
+
+.stars {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.logo-link {
+    text-decoration: none;
+    z-index: 3;
+}
+
+.pages-link {
+    font-family: 'Star Wars', sans-serif;
+    text-decoration: none;
+    z-index: 3;
+}
+
+.pages-link:hover {
+    color: gold;
+}
+
+nav {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 3;
+}
+
+.logo {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.logo-img {
+    width: 40%;
+    height: auto;
+}
+
+.logo-text {
+    font-family: 'Star Wars', sans-serif;
+    font-size: 1rem;
+}
+
+.social-media {
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+i {
+    font-size: 1.2rem;
+}
+
+i:hover {
+    color: gold;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 0;
+    justify-content: center;
+}
+
+.main-container::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,1) 61%,
+        rgba(0,0,0,.54) 79%,
+        rgba(0,0,0,0) 100%,
+    );
+    z-index: 1;
+}
+
+.intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: rgb(75, 213, 238);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 3.25rem;
+    width: 60%;
+    opacity: 0;
+    animation: intro 6s ease-out 0.5s;
+}
+
+@keyframes intro {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.intro-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    animation: intro-logo 10s ease-out 9s;
+}
+
+.intro-logo img {
+    width: 80%;
+}
+
+@keyframes intro-logo {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.1);
+    }
+}
+
+p {
+    color: gold;
+}
+
+#scroller {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 350%;
+    text-align: justify;
+    overflow: hidden;
+    height: 50em;
+    width: 20em;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -10em;
+    z-index: 0;
+    transform: perspective(350px) rotateX(25deg);
+    transform-origin: 50% 100%;
+}
+
+#scroller::after {
+    position: absolute;
+    content: '';
+    bottom: 60%;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+#scroller-content {
+    position: absolute;
+    top: 100%;
+    animation: scoller 100s linear 16s;
+}
+
+@keyframes scoller {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -200%;
+    }
+}
+
+
+@keyframes scoller {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -200%;
+    }
+}
+
+#scroller-title, #scroller-subtitle {
+    padding: 20px 0;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+#scroller-subtitle {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    margin: 40px 0 20px 0;
+    z-index: 1;
+}
+
+.footer-logo {
+    font-family: 'Star Wars', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.copyright {
+    font-weight: 500;
+    z-index: 1;
+}
+
+@media(max-width: 1300px) {
+    header {
+        flex-wrap: wrap;
+        height: 300px;
+    }
+    .logo-link {
+        width: 50%;
+    }
+    .social-media {
+        justify-content: flex-end;
+        column-gap: 15px;
+        width: 50%;
+    }
+    nav {
+        flex-direction: column;
+        order: 3;
+        align-items: center;
+        row-gap: 15px;
+        margin: 50px 0;
+    }
+}
+
+@media(max-width: 480px) {
+    p {
+        text-align: center;
+    }
+    .logo {
+        width: 100px;
+    }
+}
