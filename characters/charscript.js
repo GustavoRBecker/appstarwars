@@ -7,9 +7,9 @@ window.onload = async () => {
         for (let i = 0; i < stars; i++) {
             let star = document.createElement("div");
             star.className = 'stars';
-            let xy = randomPosition();
-            star.style.top = xy[0] + 'px';
-            star.style.left = xy[1] + 'px';
+            let [x, y] = randomPosition();
+            star.style.top = x + 'px';
+            star.style.left = y + 'px';
             document.body.append(star);
         }
         

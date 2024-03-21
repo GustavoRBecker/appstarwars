@@ -7,9 +7,9 @@ window.onload = async () => {
         for (let i = 0; i < stars; i++) {
             let star = document.createElement("div");
             star.className = 'stars';
-            let xy = randomPosition();
-            star.style.top = xy[0] + 'px';
-            star.style.left = xy[1] + 'px';
+            let [x, y] = randomPosition();
+            star.style.top = x + 'px';
+            star.style.left = y + 'px';
             document.body.append(star);
         }
         
@@ -79,24 +79,23 @@ async function loadPlanets(url) {
         
                         const name = document.createElement("span");
                         name.className = "planet-details";
-                        name.innerText = `Nome: ${details.name}`;
+                        name.innerText = `Nome: ${convertName(details.name)}`;
         
                         const diameter = document.createElement("span");
                         diameter.className = "planet-details";
-                        diameter.innerText = `Diametro: ${details.diameter}`;
+                        diameter.innerText = `Diametro: ${convertDiameter(details.diameter)}`;
         
                         const gravity = document.createElement("span");
                         gravity.className = "planet-details";
                         gravity.innerText = `Gravidade: ${convertGravity(details.gravity)}`;
-                        console.log(gravity)
         
                         const population = document.createElement("span");
                         population.className = "planet-details";
-                        population.innerText = `Populacao: ${details.population}`;
+                        population.innerText = `Populacao: ${convertPopulation(details.population)}`;
         
                         const climate = document.createElement("span");
                         climate.className = "planet-details";
-                        climate.innerText = `Clima: ${details.climate}`;
+                        climate.innerText = `Clima: ${convertClimate(details.climate)}`;
         
                         modalContent.appendChild(planetImage);
                         modalContent.appendChild(name);
@@ -166,17 +165,86 @@ function hideModal() {
     modal.style.visibility = "hidden";
 }
 
+function convertName(name) {
+    if (name === "unknown") {
+        return "desconhecido";
+    }
+
+    return name;
+}
+
+function convertDiameter(diameter) {
+    if (diameter === "unknown") {
+        return "desconhecido";
+    }
+
+    return diameter;
+}
+
 function convertGravity(gravity) {
     const gravidade = {
         standard: "padrao",
-        surface: 'superficie'
+        surface: "superficie",
+        unknown: "desconhecida",
+        'N/A': 'inexistente'
     };
 
-    const gravityType = gravity.split(" ")[1];
-    const portugueseType = gravidade[gravityType];
+    if (gravity.includes("( )")) {
+        return gravity
+            .split("( )")
+            .map(e => gravidade[e.trim()] ?? e.trim())
+            .join("( )")
+    }
 
-    const gravityNumber = gravity.split(" ")[0];
-    console.log(gravity)
-
-    return (`${gravityNumber} ${portugueseType}`).toLowerCase() || gravity;
+    return (gravity ?? "")
+        .trim()
+        .split(" ")
+        .map(e => gravidade[e] ?? e)
+        .join(" ")
 }
+
+function convertPopulation(population) {
+    if (population === "unknown") {
+        return "desconhecido";
+    }
+
+    return population;
+}
+
+function convertClimate(climate) {
+    const climas = {
+        arid: "arido",
+        temperate: "temperado",
+        frozen: "congelado",
+        murky: "turvo",
+        windy: "ventoso",
+        hot: "quente",
+        frigid: "frigido",
+        humid: "umido",
+        unknown: "desconhecido",
+        polluted: "poluido",
+        superheated: "superaquecido",
+        subartic: "subartico",
+        artic: "artico",
+        rocky: "pedregoso",
+        moist: "umido"
+    }
+
+    if (climate.includes(",")) {
+        return climate
+            .trim()
+            .split(",")
+            .map(e => climas[e.trim()] ?? e.trim())
+            .join(", ")
+    }
+    
+    if (climate.includes(" ")) {
+        return climate
+            .trim()
+            .split(" ")
+            .map(e => climas[e.trim()] ?? e.trim())
+            .join(" ")
+    }
+
+    return (climas[climate] ?? climate)
+    }
