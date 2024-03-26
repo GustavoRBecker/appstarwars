@@ -125,7 +125,7 @@ async function loadPlanets(url) {
         currentPageUrl = url;
 
     } catch(error) {
-        alert('Erro ao carregar os personagens');
+        alert('Erro ao carregar os planetas');
         console.log(error)
     }
 }
@@ -185,16 +185,10 @@ function convertGravity(gravity) {
     const gravidade = {
         standard: "padrao",
         surface: "superficie",
+        '(surface),': "(superficie),",
         unknown: "desconhecida",
         'N/A': 'inexistente'
     };
-
-    if (gravity.includes("( )")) {
-        return gravity
-            .split("( )")
-            .map(e => gravidade[e.trim()] ?? e.trim())
-            .join("( )")
-    }
 
     return (gravity ?? "")
         .trim()
